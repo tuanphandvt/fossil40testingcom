@@ -18,7 +18,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-public class ForgotPW extends UIServiceFossil {
+public class VerifySignUpButton extends UIServiceFossil {
     public AndroidDriver<MobileElement> driver;
 
 
@@ -31,7 +31,7 @@ public class ForgotPW extends UIServiceFossil {
         DesiredCapabilities cap = new DesiredCapabilities();
         cap.setCapability("platformName", "Android");
         cap.setCapability("flatformVersion", "9.0");
-        cap.setCapability("app", "/Users/pqtuan/Downloads/Portfolio Application/Portfolio Builds/Android Build/FossilQ_4_0-23406.apk");
+        cap.setCapability("app", "/Users/pqtuan/Downloads/Portfolio Application/Portfolio Builds/Android Build/FossilQ_4_0-23457.apk");
         cap.setCapability("deviceName", "ce03171320ed983c02");
         cap.setCapability("automationame", "UiAutomator2");
 
@@ -42,7 +42,7 @@ public class ForgotPW extends UIServiceFossil {
     }
 
     @Test
-    public void signup_email() throws InterruptedException {
+    public void verifysignupbutton() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver,5);
 
         MobileElement getStared_Button = driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"GET STARTED\")");
@@ -51,41 +51,43 @@ public class ForgotPW extends UIServiceFossil {
         Boolean checkGetStarted = getStared_Button.isEnabled();
         if (checkGetStarted==false){
             System.out.print("Getting failed");
-        } else {getStared_Button.click();}
+        }
+        else { System.out.print("Get Started is displayed as expected ");
+            getStared_Button.click();}
 
-        getStared_Button.click();
 
-        sleepIn(5);
 
-        driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"LOG IN\")").click();
+        MobileElement login_button = driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"LOG IN\")");
+        login_button.click();
 
-        driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"Email\")").sendKeys("ryan911fs@gmail.com");
+
+        MobileElement email_login = driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"Email\")");
+        email_login.sendKeys("ABC");
+
 
         sleepIn (2);
-        driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"Password\")").sendKeys("Abc@123");
+
+        MobileElement password_login = driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"Password\")");
+        password_login.sendKeys("Abc");
 
 
 
-        driver.findElement(By.id("com.fossil.wearables.fossil.staging:id/bt_continue")).click();
-
-        sleepIn (3);
-
-
-      //  driver.findElement(By.name("Profile")).click();
-        driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"Profile\")").click();
-
-        driver.findElement(By.xpath("//android.widget.TextView[@text='Set Goals']")).click();
-        sleepIn (2);
-
-        driver.findElement(By.xpath("//[@id='com.fossil.wearables.fossil.staging:id/fet_goals_value']")).clear();
+        Boolean check_login_button = email_login.isEnabled();
+        if (check_login_button== false){
+            System.out.print(" Login Button got disabled -> Testcase passed");
+        } else
+        { System.out.print("Button got enabled");
+        email_login.click();};
 
 
-        driver.findElement(By.id("com.fossil.wearables.fossil.staging:id/fet_goals_value")).sendKeys("7000");
 
 
-        driver.findElement(By.id("com.fossil.wearables.fossil.staging:id/iv_back")).click();
 
-        driver.findElement(By.id("com.fossil.wearables.fossil.staging:id/tv_ok")).click();
+
+
+
+
+
 
 
 
@@ -101,7 +103,7 @@ public class ForgotPW extends UIServiceFossil {
 
     }
 
-    ;
+
 
 
     public void tearDown() {

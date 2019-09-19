@@ -43,11 +43,12 @@ public class By_Email extends UIServiceFossil {
 
     @Test
     public void signup_email() throws Exception {
+
         WebDriverWait wait = new WebDriverWait(driver,5);
+
         MobileElement getStared_Button = driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"GET STARTED\")");
         wait.until(ExpectedConditions.visibilityOf(getStared_Button));
         getStared_Button.click();
-
 
         MobileElement email = driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"Email\")");
         wait.until(ExpectedConditions.visibilityOf(email));
@@ -56,12 +57,12 @@ public class By_Email extends UIServiceFossil {
         MobileElement password = driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"Password\")");
         wait.until(ExpectedConditions.visibilityOf(password));
         password.sendKeys(pwd_email);
-        sleepIn(3);
 
+        sleepIn(3);
 
         MobileElement continueButton = driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"CONTINUE\")");
         wait.until(ExpectedConditions.visibilityOf(continueButton));
-        driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"CONTINUE\")").click();
+        continueButton.click();
 
         //get OTP from mailinator
 
