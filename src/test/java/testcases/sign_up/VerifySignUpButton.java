@@ -1,5 +1,6 @@
 package testcases.sign_up;
 
+import Common.ElementDeclaration;
 import HelperService.UIServiceFossil;
 import com.sun.corba.se.spi.servicecontext.UEInfoServiceContext;
 import io.appium.java_client.MobileBy;
@@ -59,6 +60,7 @@ public class VerifySignUpButton extends UIServiceFossil {
 
         MobileElement login_button = driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"LOG IN\")");
         login_button.click();
+
 
 
         MobileElement email_login = driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"Email\")");

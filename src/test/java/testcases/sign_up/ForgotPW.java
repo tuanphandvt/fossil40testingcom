@@ -1,11 +1,13 @@
 package testcases.sign_up;
 
+import Common.ElementDeclaration;
 import HelperService.UIServiceFossil;
 import com.sun.corba.se.spi.servicecontext.UEInfoServiceContext;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,6 +19,8 @@ import org.testng.annotations.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
+
+import static org.openqa.selenium.By.*;
 
 public class ForgotPW extends UIServiceFossil {
     public AndroidDriver<MobileElement> driver;
@@ -66,7 +70,7 @@ public class ForgotPW extends UIServiceFossil {
 
 
 
-        driver.findElement(By.id("com.fossil.wearables.fossil.staging:id/bt_continue")).click();
+        driver.findElement(id("com.fossil.wearables.fossil.staging:id/bt_continue")).click();
 
         sleepIn (3);
 
@@ -74,19 +78,20 @@ public class ForgotPW extends UIServiceFossil {
       //  driver.findElement(By.name("Profile")).click();
         driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"Profile\")").click();
 
-        driver.findElement(By.xpath("//android.widget.TextView[@text='Set Goals']")).click();
+        driver.findElement(xpath("//android.widget.TextView[@text='Set Goals']")).click();
         sleepIn (2);
 
-        driver.findElement(By.xpath("//[@id='com.fossil.wearables.fossil.staging:id/fet_goals_value']")).clear();
+        driver.findElement(xpath("//[@id='com.fossil.wearables.fossil.staging:id/fet_goals_value']")).clear();
 
 
-        driver.findElement(By.id("com.fossil.wearables.fossil.staging:id/fet_goals_value")).sendKeys("7000");
+        driver.findElement(id("com.fossil.wearables.fossil.staging:id/fet_goals_value")).sendKeys("7000");
 
 
-        driver.findElement(By.id("com.fossil.wearables.fossil.staging:id/iv_back")).click();
+        driver.findElement(id("com.fossil.wearables.fossil.staging:id/iv_back")).click();
 
-        driver.findElement(By.id("com.fossil.wearables.fossil.staging:id/tv_ok")).click();
+        driver.findElement(id("com.fossil.wearables.fossil.staging:id/tv_ok")).click();
 
+       // driver.findElement(id(ElementDeclaration.CLOSE_SIGNUP_SCREEN));
 
 
 
